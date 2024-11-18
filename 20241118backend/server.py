@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, request
 import psycopg2
-import sys
 
 # Dettagli Connessione
 host = "localhost"
@@ -29,11 +28,11 @@ def connect_db(host, port, dbname, user, password):
 
 # Leggi dal db
 def read_db(connection, query):
-    # Creo un cursore
+    # Crea un cursore
     cursor = connection.cursor()
 
     print(query)
-    # Esegui una query
+    # Esegue una query
     cursor.execute(query)
 
     # Recupera i risultati
