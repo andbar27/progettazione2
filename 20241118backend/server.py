@@ -62,7 +62,7 @@ def menu(queries_in = []) -> str:
     queries.append("SELECT * FROM Assenza WHERE tipo = 'Malattia'")
     queries.append("Query personalizzata")
     queries.append("Chiudi")
-    
+
     print("\nLista query")
     for i in range(0,len(queries)):
         print(i+1,") ", queries[i])
@@ -94,6 +94,8 @@ connection = connect_db(host, port, dbname, user, password)
 if connection == None:
     flag = False
 
+numErrors = 0
+
 while flag:
     query = menu(["SELECT * FROM WP","SELECT * FROM AttivitaProgetto"])
     
@@ -110,6 +112,7 @@ while flag:
         read_db(connection, query)
 
     except Exception as e:
+        numErrors += 1
         print(f"\nErrore: {e}")
         print("Riavvio DB")
 
@@ -118,6 +121,9 @@ while flag:
         connection = connect_db(host, port, dbname, user, password)
         if connection == None:
             flag = False
+
+        if numErrors >= 5:
+            print("Smettila di sbagliare")
 
 
 
