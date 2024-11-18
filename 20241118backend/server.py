@@ -28,20 +28,25 @@ def connect_db(host, port, dbname, user, password):
 
 # Leggi dal db
 def read_db(connection, query):
-    # Crea un cursore
-    cursor = connection.cursor()
+    try:
+        # Crea un cursore
+        cursor = connection.cursor()
 
-    print(query)
-    # Esegue una query
-    cursor.execute(query)
+        print(query)
+        # Esegue una query
+        cursor.execute(query)
 
-    # Recupera i risultati
-    rows = cursor.fetchall()
-    for row in rows:
-        print(row)
+        # Recupera i risultati
+        rows = cursor.fetchall()
+        for row in rows:
+            print(row)
+        
+    except Exception as e:
+        raise e
     
-    if cursor is not None:
-        cursor.close()
+    finally:
+        if cursor is not None:
+            cursor.close()
 
 
 def query_multiline() -> str:
@@ -77,7 +82,7 @@ def menu(queries_in = []) -> str:
         return ""
 
     if sel == len(queries) - 1:
-        print("Query personalizzata: ")
+        print("Query personalizzata: (chiudi con ;)")
         return query_multiline()
     
     return queries[sel-1]
