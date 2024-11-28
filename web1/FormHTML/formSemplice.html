@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form di registrazione</title>
+        <style>
+            body {
+                margin-left: 30%;
+                margin-right: 30%;
+                font-family: Arial;
+                font-size: 22px;
+                text-align: center;
+                background: #a9d6bf; 
+            }
+            p {
+                text-align: left;
+                color: red;
+            } 
+            #btnid {
+                text-align: center;		
+            }
+            
+            input[type = submit], input[type = reset] {
+                background-color: orange; 
+                font-size: 22px;	
+            }		
+        </style>	
+
+    </head>
+    <body>
+        <h1>Modulo di registrazione</h1>
+        <form action="/gestisciDatiForm" method="get">
+            <fieldset>
+            <p>
+                <label for="fname">Inserisci nome:</label><br>
+                <input type="text" name="fname" size="20" maxlength="16" pattern="^[a-zA-Z\s]+$">
+            </p>
+            <p>
+                <label for="fcognome">Inserisci cognome:</label><br>
+                <input type="text" name="fcognome" pattern="^[a-zA-Z\s]+$">
+            </p>
+            </fieldset>
+            <p>
+                <label for="fsesso">Sesso:</label>
+                <input type="radio" name="fsesso" value="1">M
+                <input type="radio" name="fsesso" value="2">F
+            </p>
+            <p>
+                <label for="ss">Comune di nascita</label><br>
+                <select name="ss">
+                    <option value="MI">Milano</option>
+                    <option value="BA">Bari</option>
+                    <option value="TO" selected="">Torino</option>
+                    <option value="roma">Roma</option>
+                    <option value="PE">Pescara</option>
+                    <option value="AP">Ascoli Piceno</option>
+                </select>
+            </p>
+            <input type="submit" value="invia dati">
+        </form>
+
+    </body>
+</html>

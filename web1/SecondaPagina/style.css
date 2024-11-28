@@ -1,0 +1,31 @@
+
+/* Modificare elemento con css: */
+/* per tag */
+body {
+    background-color: aqua;
+    text-align: center;
+}
+p {
+    text-align: left;
+    font-size: xx-large;
+}
+
+/* per id */
+#testorosso {
+    color: red
+}
+
+/* p di div */
+div p {
+    color: yellow
+}
+
+/* per classe */
+p.testoverde {
+    color: green;
+}
+/* MODIFICARE CLASSE PRESISTENTE Bootstrap */
+table.table {
+    margin-left: 10%;
+    width: 10%;
+}
