@@ -1,0 +1,8 @@
+.bordoArrotondato{
+    height: 300px;
+    border-radius: 90px;
+}
+
+#box{
+    background-color: red;
+}
