@@ -6,6 +6,21 @@ import './components/Card'
 import Card from './components/Card'
 
 
+function alertClick(){
+  alert("Ma ciao!");
+}
+
+function handleChange(e){
+  console.log(e.target.value);  // Legge valore dall'oggetto cambiato
+}
+
+function handleSubmit(e){
+  e.preventDefault()  // Evita ricaricamento pagina
+  console.log(e)
+}
+
+
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -68,9 +83,30 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
+
+
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        <button onClick={() => alert("Ciaoo")}>
+          alert 
+        </button>
+        <button onClick={(alertClick)}>
+          alert 2
+        </button>
+        <input type="text" onChange={handleChange}></input>
+
+
+
+
+        <form onSubmit={handleSubmit}>
+          <input type="text"></input>
+          <button type="submit">Sub</button>
+        </form>
+
+
+
+
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>

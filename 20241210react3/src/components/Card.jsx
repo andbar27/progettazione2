@@ -1,3 +1,4 @@
+
 function Card({titolo, imgUrl, descrizione, isVisit}) {
     return (
         <div>
