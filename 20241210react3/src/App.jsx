@@ -39,10 +39,10 @@ function App() {
           {cities.map((city) => (
             <Card 
               key = {city.id}
-              titolo={city.name}
-              imgUrl={city.imgUrl}
-              isVisit={city.isVisit}
-              descrizione={city.desc}
+              titolo = {city.name}
+              imgUrl = {city.imgUrl}
+              isVisit = {city.isVisit}
+              descrizione = {city.desc}
             >
             </Card>
           ))}
@@ -51,10 +51,10 @@ function App() {
             (city)=>(
               <Card 
                 key = {city.id}
-                titolo={city.name}
-                imgUrl={city.imgUrl}
-                isVisit={city.isVisit}
-                descrizione={city.desc}
+                titolo = {city.name}
+                imgUrl = {city.imgUrl}
+                isVisit = {city.isVisit}
+                descrizione = {city.desc}
               >
               </Card>
             ))}
