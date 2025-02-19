@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
 function MyApp() {
-    const [readQuery, setReadQuery] = useState("")
-    const [writeQuery, setWriteQuery] = useState("")
-    const [resultMsg, setResultMsg] = useState("")
-    const [resultNRows, setResultNRows] = useState("")
+    const [readQuery, setReadQuery] = useState("");
+    const [writeQuery, setWriteQuery] = useState("");
+    const [resultMsg, setResultMsg] = useState("");
+    const [resultNRows, setResultNRows] = useState("");
 
     // Funzione per inviare la query 
     const handleQuery = async (route, query) => {

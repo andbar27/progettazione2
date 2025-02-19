@@ -17,10 +17,15 @@ if cur is None:
 
 
 # Views
-def execReadQuery(jsonReq, cur):
+def execReadQuery(jsonReq):
+    global cur
     query = jsonReq.get('query')
     print(jsonReq.get('query'))
-    iNumRows = db.read_in_db(cur, query)
+    try: 
+        iNumRows = db.read_in_db(cur, query)
+    except Exception as e:
+        cur = db.reset()
+    
     sResult = dict()
     sResult["numRows"] = str(iNumRows)
     sResult["columns"] = []
@@ -39,10 +44,14 @@ def execReadQuery(jsonReq, cur):
     return sResult, 0
 
 
-def execWriteQuery(jsonReq, cur):
+def execWriteQuery(jsonReq):
+    global cur
     query = jsonReq.get('query')
     print(jsonReq.get('query'))
-    err = db.write_in_db(cur, query)
+    try:
+        err = db.write_in_db(cur, query)
+    except Exception as error:
+        cur = db.reset()
 
     return err
 
@@ -61,7 +70,7 @@ def readQuery():
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':
         jsonReq = request.json
-        res, err = execReadQuery(jsonReq, cur)
+        res, err = execReadQuery(jsonReq)
         
         if err == -1:
             return jsonify({"Esito": "001", "Msg": "Query non valida"}), 400
@@ -86,7 +95,7 @@ def writeQuery():
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':
         jsonReq = request.json
-        err = execWriteQuery(jsonReq, cur)
+        err = execWriteQuery(jsonReq)
 
         if err == -1:
             return jsonify({"Esito": "001", "Msg": "Query non valida"}), 400

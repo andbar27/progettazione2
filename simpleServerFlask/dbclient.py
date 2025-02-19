@@ -20,8 +20,6 @@ def config(filename='database.ini', section='postgresql'):
 
 conn = None
 
-
-
 def connect():
     """ Connect to the PostgreSQL database server """
     print('Connecting to the PostgreSQL database 0...')
@@ -42,6 +40,12 @@ def connect():
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
         return None
+
+
+def reset():
+    global conn
+    conn.reset()
+    return connect
 
 
 def write_in_db(cur,sql_insert):
