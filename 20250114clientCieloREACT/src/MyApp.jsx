@@ -8,6 +8,30 @@ function MyApp() {
     const [columns, setColumns] = useState([]);
     const [rows, setRows] = useState([]);
 
+    const styles = {
+      backgroundTop: {
+          padding: "20px",
+          marginBottom: "20px",
+          backgroundImage: "url('/ala.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "200px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "white",
+      },
+      backgroundRest: {
+          //backgroundImage: "url('/patternbiancoblu.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "100vh",
+          padding: "20px",
+          color: "black",
+          
+      }
+  };
+
     // Funzione per inviare la query 
     const handleQuery = async (route, query) => {
         try {
@@ -38,6 +62,40 @@ function MyApp() {
         }
     };
 
+
+
+    // Funzione per comunicare con il fake server
+    const getJson = async (route) => {
+      try {
+          const response = await fetch(`http://127.0.0.1:8080/${route}`, {
+              // method: "GET",
+              // headers: {
+              //     "Content-Type": "application/json",
+              // },
+              //body: JSON.stringify({ query }),
+          });
+          
+          const data = await response.json();
+          console.log("data: ", data);
+          
+          const msg = data.Msg;
+          const esito = data.Esito;
+          var numRows = "-1";
+          if((route == "aeroporti")||(route == "elencovoli")||(route == "compagnie"))
+            route = "readquery";
+          if (route == "readquery" && esito == "000") {
+              numRows = data.queryResult.numRows;
+              setColumns(data.queryResult.columns || []);
+              setRows(data.queryResult.rows || []);
+          } 
+          
+          setResultMsg(msg || "None");
+          setResultNRows(numRows || "None");
+      } catch (error) {
+          setResultMsg("Errore nella richiesta: " + error.message);
+      }
+  };
+
     const voli =  `SELECT lap.citta as Partenza, 
                           ap.partenza as Aeroporto_Partenza,
                           laa.citta as Arrivo, 
@@ -60,20 +118,23 @@ function MyApp() {
 
 
     return (
-        <div style={{ padding: "20px", marginBottom: "20px" }}>
+        <div style={{  }}>
+          <div style={styles.backgroundTop}>
             <h1>Client Flask Cielo DB</h1>
             <div style={{ padding: "20px", marginBottom: "3px" }}>
-                <button onClick={() => handleQuery("readquery", voli)} style={{ marginLeft: "5px", backgroundColor: "yellow", color: "black" }}>
+                <button onClick={() => getJson("elencovoli")} style={{ marginLeft: "5px", backgroundColor: "yellow", color: "blue" }}>
                         Elenco Voli
                 </button>
-                <button onClick={() => handleQuery("readquery", aeroporti)} style={{ marginLeft: "5px", backgroundColor: "Blue", color: "white" }}>
+                <button onClick={() => getJson("aeroporti")} style={{ marginLeft: "5px", backgroundColor: "Blue", color: "white" }}>
                         Aeroporti
                 </button>
             
-                <button onClick={() => handleQuery("readquery", compagnie)} style={{ marginLeft: "5px",  backgroundColor: "blue", color: "white"}}>
+                <button onClick={() => getJson("compagnie")} style={{ marginLeft: "5px",  backgroundColor: "blue", color: "white"}}>
                         Compagnie Aeree
                 </button>
             </div>
+          </div>
+          <div  style={styles.backgroundRest}>
             <div style={{ marginBottom: "20px" }}>
                 <label>
                     Query di Lettura:
@@ -140,6 +201,7 @@ function MyApp() {
                 </div>
             )}
         </div>
+      </div>
     );
 }
 
