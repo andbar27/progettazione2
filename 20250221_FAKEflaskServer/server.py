@@ -114,7 +114,7 @@ def elencoVoli():
     # Elenco Voli
     return jsonify(
 
-{'Esito': '000', 'Msg': 'Query eseguita con successo', 'queryResult': {'numRows': '13', 'columns': ['partenza', 'aeroporto_partenza', 'arrivo', 'aeroporto_arrivo', 'durata_minuti', 'compagnia_aerea'], 'rows': [('New York', 'JFK', 'Roma', 'FCO', 600, 'MagicFly'), ('Roma', 'CIA', 'Roma', 'FCO', 382, 'Caimanair'), ('Roma', 'CIA', 'New York', 'JFK', 432, 'Apitalia'), ('Roma', 'FCO', 'Roma', 'CIA', 382, 'Apitalia'), ('New York', 'JFK', 'Roma', 'FCO', 599, 'Apitalia'), ('London', 'HTR', 'Paris', 'CDG', 60, 'MagicFly'), ('Paris', 'CDG', 'London', 'HTR', 60, 'Caimanair'), ('London', 'HTR', 'Roma', 'FCO', 150, 'Apitalia'), ('Roma', 'FCO', 'New York', 'JFK', 600, 'MagicFly'), ('Roma', 'FCO', 'New York', 'JFK', 601, 'Caimanair'), ('Roma', 'FCO', 'New York', 'JFK', 599, 'Apitalia'), ('Berlino', 'GER', 'New York', 'JFK', 10, 'tedesco'), ('Roma', 'FCO', 'Berlino', 'GER', 10, 'tedesco')]}}
+{'Esito': '000', 'Msg': 'Query eseguita con successo', 'queryResult': {'numRows': '13', 'columns': ['partenza', 'aeroporto_partenza', 'arrivo', 'aeroporto_arrivo', 'durata_minuti', 'compagnia_aerea'], 'rows': [('New York', 'JFK', 'Roma', 'FCO', 600, 'MagicFly'), ('Roma', 'CIA', 'Roma', 'FCO', 382, 'Caimanair'), ('Roma', 'CIA', 'New York', 'JFK', 432, 'Apitalia'), ('Roma', 'FCO', 'Roma', 'CIA', 382, 'Apitalia'), ('New York', 'JFK', 'Roma', 'FCO', 599, 'Apitalia'), ('London', 'HTR', 'Paris', 'CDG', 60, 'MagicFly'), ('Paris', 'CDG', 'London', 'HTR', 60, 'Caimanair'), ('London', 'HTR', 'Roma', 'FCO', 150, 'Apitalia'), ('Roma', 'FCO', 'New York', 'JFK', 600, 'MagicFly'), ('Roma', 'FCO', 'New York', 'JFK', 601, 'Caimanair'), ('Roma', 'FCO', 'New York', 'JFK', 599, 'Apitalia'), ('Berlino', 'GER', 'New York', 'JFK', 10, 'Tedesco'), ('Roma', 'FCO', 'Berlino', 'GER', 10, 'Tedesco')]}}
 
     ), 200
 
@@ -137,7 +137,7 @@ def compagnie():
     # Elenco Compagnie
     return jsonify(
 
-{'Esito': '000', 'Msg': 'Query eseguita con successo', 'queryResult': {'numRows': '6', 'columns': ['nome', 'annofondaz'], 'rows': [('Caimanair', 1954), ('Apitalia', 1900), ('MagicFly', 1990), ('k', None), ('w', 1900), ('tedesco', None)]}}
+{'Esito': '000', 'Msg': 'Query eseguita con successo', 'queryResult': {'numRows': '4', 'columns': ['nome', 'annofondaz'], 'rows': [('Caimanair', 1954), ('Apitalia', 1900), ('MagicFly', 1990), ('Tedesco', 1946)]}}
 
     ), 200
 
